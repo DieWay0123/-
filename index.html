@@ -1,20 +1,68 @@
 <!DOCTYPE html>
 <head>
-  <article>遠端控制飼育機器</article>
-    </head>
+<meta name="viewport" content="width=device-width initial-scale=1.0">
+<title>自主學習遠端寵物餵食器</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+</head>
+
 <body>
- 
-  <button id="01"  onclick="opt1()"><font color=green size=5>餵食</font> </button>
-  <button id="02"  onclick="opt2()"><font color=green size=5>倒水</font> </button>
-  <button id="03"  onclick="opt3()"><font color=green size=5>監控</font> </button>
-  <button id="04"  onclick="opt4()"><font color=green size=5>未決定</font> </button>
+  <form action method="get">
+  <input type="text" name="time" id="time">
+  <input type="submit" value="提交">
+  </form>
+  <header>
+    <h1>遠端寵物餵食器</h1>    
+  </header>
+    <h2><button id="01" class="btn1"><font color=green size=5>餵食</font> </button></h2>
+      <div class="inputGroup1" style="display: none;">
+        <p>餵食Time:
+        <input type="text" class="timepicker1">
+        </p>
+      </div>
+    <h2><button id="02" class="btn2"><font color=green size=5>倒水</font> </button></h2>
+      <div class="inputGroup2" style="display: none;">
+        <p>倒水Time:
+        <input type="text" class="timepicker2">
+        </p>    
+      </div>
+    <h2><button id="03" class="btn3"><font color=green size=5>監控</font> </button></h2>
+    <h3>hi</h3>
   <script>
-    function opt1(){
-	  {
-      window.open(
-        "C:/Users/呆唯/Documents/二自主學習/餵食.html",
-        "/zhcn/docs/Web/API/Window/open"
-      )
-    }  
-    }
-   </script>
+    $(document).ready(function(){
+      $('#01').click(function(){
+        $(".inputGroup1").toggle()});
+        $(".timepicker1").timepicker({
+        timeFormat: "HH:mm", // 時間隔式
+        interval: 10, //時間間隔
+        minTime: "00:00", //最小時間
+        maxTime: "23:50", //最大時間
+        defaultTime: "00:00", //預設起始時間
+        startTime: "00:00", // 開始時間
+        dynamic: false, //是否顯示項目，使第一個項目按時間順序緊接在所選時間之後
+        dropdown: true, //是否顯示時間條目的下拉列表
+        scrollbar: false //是否顯示捲軸
+      })
+      $(".timepicker1").on('selectTime',function(){
+        $('#time').timepicker('val');                                      
+      });
+   });
+    $(
+      document).ready(function(){
+      $('#02').click(function(){
+        $(".inputGroup2").toggle()});
+        $(".timepicker2").timepicker({
+        timeFormat: "HH:mm", // 時間隔式
+        interval: 10, //時間間隔
+        minTime: "00:00", //最小時間
+        maxTime: "23:50", //最大時間
+        defaultTime: "00:00", //預設起始時間
+        startTime: "00:00", // 開始時間
+        dynamic: false, //是否顯示項目，使第一個項目按時間順序緊接在所選時間之後
+        dropdown: true, //是否顯示時間條目的下拉列表
+        scrollbar: false //是否顯示捲軸
+      })
+    });
+  </script>
+</body>
